@@ -29,10 +29,10 @@ scaledPred = predict(wijnScaled.pca);
 #Classificatie
 #Opdelen in train, validatie en test data
 indices = 1:178;
-train = sample(178,50);
-validate_test = indices[-train];
-validate = sample(validate_test,50);
-test = validate_test[-validate];
+test = sample(178,50);
+validate_train = indices[-test];
+validate = sample(validate_train,50);
+train = validate_train[-which(validate_train %in% validate)];
 
 wijn.train = wijn[train,]
 wijn.validate = wijn[validate,]
