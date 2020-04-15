@@ -18,40 +18,41 @@ summary(wijn)
 wijnScaled = scale(wijn[,2:14]);
 #extra col met de druifsoorten
 wijnScaledSp = wijn;wijnScaledSp[,2:14] = wijnScaled;
-
-
+wijnScaledSp$V1 <- as.character(wijnScaledSp$V1)
+wijnScaledSp$V1
 ##-------------------------------------------------------------------------
 
 #geschaalde PCA maken [waarschijnlijk best aangezien geen eenheden gegeven worden]
 wijnScaled.pca = prcomp(wijnScaled,scale=TRUE);
 
 #plotjes
+screeplot(wijnScaled.pca)
 plot(wijnScaled.pca)
 
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=1,y=2,colour = V1,label= TRUE)
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=1,y=3,colour = V1)
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=1,y=4,colour = V1)
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=1,y=5,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=1,y=2,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #interessant voor PC1 en PC2
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=1,y=3,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #interessant voor PC1
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=1,y=4,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #interessant  voor PC1
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=1,y=5,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #interessant  voor PC1
 
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=2,y=1,colour = V1)
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=2,y=3,colour = V1)
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=2,y=4,colour = V1)
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=2,y=5,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=2,y=1,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #interessant voor PC1 en PC2
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=2,y=3,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #interessant voor PC2
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=2,y=4,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #interessant voor PC2 
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=2,y=5,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #interessant voor PC2
 
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=3,y=1,colour = V1)
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=3,y=2,colour = V1)
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=3,y=4,colour = V1)
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=3,y=5,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=3,y=1,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #interessant voor PC1
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=3,y=2,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #interessant voor PC2
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=3,y=4,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #niet interessant
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=3,y=5,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #niet interessant
 
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=4,y=1,colour = V1)
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=4,y=2,colour = V1)
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=4,y=3,colour = V1)
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=4,y=5,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=4,y=1,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #interessant voor PC1
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=4,y=2,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #interessant voor PC2
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=4,y=3,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #niet interessant
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=4,y=5,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #niet interessant
 
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=5,y=1,colour = V1)
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=5,y=2,colour = V1)
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=5,y=3,colour = V1)
-autoplot(wijnScaled.pca, data = wijnScaledSp, x=5,y=4,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=5,y=1,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #interessant voor PC1
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=5,y=2,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #interessant voor PC2
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=5,y=3,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #niet interessant
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=5,y=4,colour = "V1",loadings=TRUE, loadings.label=TRUE, loadings.colour = "blueviolet") #niet interessant
 
 #numerieke info
 
