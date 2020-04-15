@@ -87,13 +87,11 @@ qda.er = mean(qda.ervec);qda.er
 #zoek k met kleinste error rate
 
 max_k = 78;
-resultaten = cbind(APER=NULL,LOOV=NULL,CV=NULL);
+resultaten = cbind(CV=NULL);
 klijst = 1:max_k;
 
 for (k in klijst) {
   resultaten = rbind(resultaten,cbind(
-    APER=aer(V1,knn(wijnScaledSp, wijnScaledSp, V1, k),FALSE),
-    LOOV=aer(V1,knn.cv(wijnScaledSp,V1,k),FALSE),
     CV=aer(V1[validate],knn(wijnScaledSp[train,],wijnScaledSp[validate,],V1[train],k),FALSE)
   ))
 }
@@ -106,8 +104,6 @@ matplot(1:78,resultaten,type='l',add=TRUE)
 best_k = which.min(resultaten[,3])
 resultaten
 
-#APER geeft natuurlijk beste resultaten samen met LOOV maar denk dat er in de opdracht specifiek verwacht wordt dat we direct CV doen met de train, en validate/test sets
-
 
 #lda geeft gemiddeld kleinere error rate dan qda en ligt in dezelfde grootteorde van knn
 
@@ -115,7 +111,11 @@ resultaten
 #testen t.o.v. testset
 
 lda.er.test #al berekend in vorige sectie
-CV=aer(V1[test],knn(wijnScaledSp[train,],wijnScaledSp[test,],V1[train],best_k),FALSE); CV
+CV.test.ervec = c(1:50)
+for (j in 1:50) {
+  CV.test.ervec[j]=aer(V1[test],knn(wijnScaledSp[train,],wijnScaledSp[test,],V1[train],best_k),FALSE);
+}
+#gemiddelde error rate van 50 nearest neighbour modellen met best_k
+CV.er.test = mean(CV.test.ervec); CV.er.test
 
-#nearest neighbours geeft betere aer.
-
+#lda geeft betere aer.
