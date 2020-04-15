@@ -98,8 +98,9 @@ for (k in klijst) {
 
 head(resultaten)
 
-plot(c(0,78),c(0,1),xlab="Number of neigbours",ylab="Error rate",type="n"); abline(h=lda.er, col = "blueviolet"); abline(h=qda.er, col="chartreuse")
+plot(c(0,78),c(0,1),main="Error rate in function of neighbours",xlab="Number of neigbours",ylab="Error rate",type="n"); abline(h=lda.er, col = "blueviolet"); abline(h=qda.er, col="chartreuse")
 matplot(1:78,resultaten,type='l',add=TRUE)
+legend(x=0, y=0.8, legend=c('knn','lda','qda'), fill=c("black","blueviolet","chartreuse"))
 
 best_k = which.min(resultaten[,3])
 resultaten
