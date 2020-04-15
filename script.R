@@ -1,9 +1,14 @@
 ##-------------------------------------------------------------------------
 #!change working directory!
 #Data Inladen
-
+install.packages("ggfortify")
+install.packages("ggplot2")
+install.packages("Rcpp")
 library(MASS)
 library(class)
+library(ggplot2)
+library(ggfortify)
+
 
 wijn <- read.csv("wijn.csv", header=FALSE, sep = ",")
 attach(wijn)
@@ -20,7 +25,36 @@ wijnScaledSp = wijn;wijnScaledSp[,2:14] = wijnScaled;
 #geschaalde PCA maken [waarschijnlijk best aangezien geen eenheden gegeven worden]
 wijnScaled.pca = prcomp(wijnScaled,scale=TRUE);
 
+#plotjes
 plot(wijnScaled.pca)
+
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=1,y=2,colour = V1,label= TRUE)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=1,y=3,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=1,y=4,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=1,y=5,colour = V1)
+
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=2,y=1,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=2,y=3,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=2,y=4,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=2,y=5,colour = V1)
+
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=3,y=1,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=3,y=2,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=3,y=4,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=3,y=5,colour = V1)
+
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=4,y=1,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=4,y=2,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=4,y=3,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=4,y=5,colour = V1)
+
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=5,y=1,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=5,y=2,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=5,y=3,colour = V1)
+autoplot(wijnScaled.pca, data = wijnScaledSp, x=5,y=4,colour = V1)
+
+#numerieke info
+
 summary(wijnScaled.pca)
 
 scaledRot = wijnScaled.pca$rotation;
